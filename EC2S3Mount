@@ -1,0 +1,28 @@
+- create instance
+- select free tire eligible-Amazon linux 2 AMI(HVM)
+- allow all traffic control
+- create
+
+Go to Mobaxterm 
+- SSH
+----- sudo yum update
+----- sudo yum install s3fs-fuse -y
+----- sudo yum update
+----- sudo -i (back to root directory)
+----- sudo amazon-linux-extras install epel -y
+----- sudo yum install s3fs-fuse -y
+----- echo AKIAU473UALUGGGL2W6H:N0meE2i4OFgDl66VtYW0gKtBPq3s88XrW2B0p+kf > ${Home}/.Shrote123
+----- ls -ld /root/
+----- ls -la /root/
+----- chmod 600 /root /.Shrote123
+----- mkdir /filemount
+----- ls
+-create bucket & copy Bucket name (my-mount-bucket)
+----- s3fs my-mount-bucket /filemount -o passwd_file=${Home}/.Shrote123
+----- chmod 600 /root/.Shrote123
+----- mount |grep filemount
+----- cd /filemount/
+----- ls
+----- touch file1
+----- ls 
+----------file1
