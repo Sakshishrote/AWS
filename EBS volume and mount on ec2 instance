@@ -1,0 +1,70 @@
+Create an EBS volume and mount on ec2 instance
+
+1> Launch Instance 
+       	- instance types
+   	- key pair
+	-allow SSH & HTTP
+	-Launch instance
+
+2> Go to ESB
+	- Volumes  
+	- Create new Volume
+	- Volume type 
+	  General Purpose SSD
+                - Size 30 GB 
+                - Availability zone Same of instance.
+                - Tags 
+	  name & Volume-instance 
+ 
+3> Select created Volume 
+	- Actions 
+	- Attach Volume
+   	- Instance state (Running)
+   	 device name : /dev/sdf
+
+Go to instance ,copy public ID 
+
+4> Go to Mobaxterm 
+	- session 
+	- SSH 
+	- Hostname:Paste Public IP of our Instances.
+	- username : ec2-user 
+	- Advanced setting:select Private key
+	- pem file select 
+	- OK  
+
+5>Commands 
+                 -sudo su
+                 -df -h     
+                 -lsblk   
+                  -mkfs -t xfs /dev/xvdf 
+                  -Allocate file system
+                   -file -s /dev/xvdf
+                  -mkdir /mnt/dir
+                  -cd /mnt/dir
+                   -mount /dev/xvdf /mnt/dir
+                  -mounting is done
+                   -df -h
+                   To check mounted path.
+                                   
+ 8) Go to Instance ID  Storage 
+                Block device
+                to check if volume is mounted 
+
+                                                   
+                                                                 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
