@@ -1,0 +1,25 @@
+Host webpage using httpd
+
+steps
+
+ - EC2
+ -launch instance 
+- name 
+ -select  key pair
+ -allow httpin firewall
+ -click advanced details 
+-go below to user data 
+-add userdata : 
+	#!/bin/bash
+	sudo yum update 
+	sudo yum install httpd -y
+	sudo systemctl start httpd
+	sudo systemctl enable httpd
+	sudo echo "<h1> Welcom to AWS "$HOSTNAME"</h1> > 
+	 /var/www/html/index.html
+
+-click launch instance 
+ -copy public ip 
+ -paste in the browser 
+
+ webpage is successfully hosted. 
