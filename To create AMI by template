@@ -1,0 +1,25 @@
+ To create AMI by template
+steps
+
+- EC2
+- launch template 
+-select os image 
+ -instance type t3.micro
+ - keypair 
+ -select subnet
+ -security group: select existing 
+-launch template
+
+- select template name
+- action-select launch instance form template
+- bydefault  
+ click launch instance
+- select the instance 
+- action
+-  image and templates 
+- create image
+. image name
+-  bydefault 
+- create image
+ goto AMIs to new created AMI
+ successfully created AMI by Template.
