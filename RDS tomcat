@@ -1,0 +1,85 @@
+RDS (mysql)
+
+1   create database 
+     standard creation
+      engine option = mariaDB
+     template = free (bcoz of high cost)
+      credential setting = username- (admin)  
+       auto generate a passward (admin12345)
+     cluster storage conf = aurora standard
+      instance configuration =(bydefault)
+       storage = (bydefault)
+      storage autoscaling (cross)
+      Availability & durability (bydefault)
+     connectivity = default
+     VPC security group(firewal) = create new =gives  vpc name 
+     additional conf
+     database authentication = password
+     Monitoring = (bydefault)
+     Database option = give name(database1)
+    Encryption = (bydefault)
+     log export
+     oteher bydefault
+     create database 
+
+2   Create instance
+
+     name = rds-instance
+     ami image = amazon 2
+     instance type = t2 micro
+     key pair = select
+      network setting (bydefault)
+      create instance
+
+3 ssh - ec2 instance
+sudo yum install java -y
+         java --version
+         cd /opt (packages)
+        install apache 
+        wget package link (apache download 9 in browsser)
+  unzip= tar -xvf apac
+       cd apache
+        cd bin
+       ./catalina start
+      go to security group = allow tcp = port 8080
+       open brw = paste public ip:8080
+      ./catalina stop
+      
+  go to security group = allow mysql/arora (ec2)
+     drag and drop those file in moba (.war nd .jar)
+  mv /home/ec2-user/mysql-connector.jar /opt/apache-tomcat-9.0.78/lib
+ls /opt/apache-tomcat-9.0.78/lib
+
+     mv /home/ec2-user/student.war /opt/apache-tomcat-9.0.78/webapps
+ls /opt/apache-tomcat-9.0.78/webapps
+    cd /opt/apache/conf ---- vim context.xml
+
+ <Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+               username="admin" password="admin12345" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://database-1.czdl5maaawco.us-east-2.rds.amazonaws.com:3306/db"/>
+
+ first install yum install mariadb-server -y
+
+go to rds database select n sg -inbound rule -- anywhere --save
+
+      mysql -u admin -h (endpoint) -p
+      show databases;
+      use db;
+      CREATE TABLE if not exists students(student_id INT NOT NULL AUTO_INCREMENT,
+	student_name VARCHAR(100) NOT NULL,
+    student_addr VARCHAR(100) NOT NULL,
+	student_age VARCHAR(3) NOT NULL,
+	student_qual VARCHAR(20) NOT NULL,
+	student_percent VARCHAR(10) NOT NULL,
+	student_year_passed VARCHAR(10) NOT NULL,
+	PRIMARY KEY (student_id)
+);
+
+      exit
+      go to the bin of apache
+       ./catalina.sh start
+       then go to the browser public ip;8080/student
+
+ 
+
